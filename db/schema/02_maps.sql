@@ -1,9 +1,9 @@
--- Drop and recreate Users table (Example)
+-- Drop and recreate maps table
 
-DROP TABLE IF EXISTS users CASCADE;
-CREATE TABLE users (
+DROP TABLE IF EXISTS maps CASCADE;
+CREATE TABLE maps (
   id SERIAL PRIMARY KEY NOT NULL,
-  username text NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL
+  user_key INT FOREIGN KEY REFERENCES users(id),
+  name TEXT NOT NULL,
+  date_created DATE NOT NULL
 );
