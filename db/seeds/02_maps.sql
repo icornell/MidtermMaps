@@ -1,5 +1,3 @@
--- Users maps table seeds here
-
 INSERT INTO maps (id, user_key, name, date_created)
 VALUES
 ('1', '2', 'Vacation Plans', '2023-08-16'),
