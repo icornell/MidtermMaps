@@ -1,9 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 const { getUsers, userMaps, userLikes } = require('../db/queries/users');
+const { addNewMap ,getAllMaps } = require('../db/queries/maps');
 
 //view profile, show maps and likes
-
 router.get('/u/:id', async (req, res) => {
   try {
     const userId = req.params.id;

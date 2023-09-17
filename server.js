@@ -30,8 +30,7 @@ app.use(express.static('public'));
 // Note: Feel free to replace the example routes below with your own
 const index = require('./routes/index');
 const user = require('./routes/user');
-const newMap = require('./routes/new-map');
-const viewMap = require('./routes/view-map');
+const map = require('./routes/map');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
