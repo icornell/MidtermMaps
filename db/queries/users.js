@@ -4,6 +4,10 @@ const getUsers = () => {
   return db.query('SELECT * FROM users;')
     .then(data => {
       return data.rows;
+    })
+    .catch((err) => {
+      console.error(err);
+      throw err;
     });
 };
 
@@ -14,7 +18,7 @@ const userMaps = (user_id) => {
     values: [user_id],
   };
 
-  return db.query(userMapsResult)
+  return db.query(userMapsQuery)
     .then((userMapsResult) => {
       return userMapsResult.rows;
     })
@@ -31,7 +35,7 @@ const userLikes = (user_id) => {
     values: [user_id],
   };
 
-  return db.query(userLikesResult)
+  return db.query(userLikesQuery)
     .then((userLikesResult) => {
       return userLikesResult.rows;
     })

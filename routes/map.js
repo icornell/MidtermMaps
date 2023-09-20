@@ -12,13 +12,13 @@ router.post('/create', async (req, res) => {
     const mapInfo = {
       'user_key': req.session.user_id,
       'name': req.body.name,
-      'description': req.body.description
+      'date_created': new Date().toLocaleDateString('en_CA'),
     };
 
     //add new map to database
-    const newMap = await addNewMap.createMap(mapInfo);
+    const newMap = await addNewMap(mapInfo);
 
-    res.redirect('/map/${newMap.id}')
+    res.redirect(`/map/${newMap.id}`)
   }
   catch (err) {
     console.error(err);
@@ -30,11 +30,10 @@ router.post('/create', async (req, res) => {
 router.get('/:id', (req, res) => {
   try {
     const mapID = req.params.id;
-    const map = getMapById(mapID);
-    //replace with helper function to get map by id
+    const map = await getMapById(mapID);
 
     if (map) {
-      res.redirect('mapView', { map });
+      res.render('mapView', { map });
       //replace mapView with the html view file name
     } else {
       res.status(404).send("Map not found");
@@ -46,27 +45,27 @@ router.get('/:id', (req, res) => {
   }
 });
 
-router
-  .route('/:id/update')
-  .get((req, res) => {
-//get map
-    const mapID = req.params.id;
-    const map = getMapById(mapID);
+//edit a map
+// router
+//   .route('/:id/update')
+//   .get((req, res) => {
+//     const mapID = req.params.id;
+//     const map = getMapById(mapID);
 
-    const mapInfo = {
-      id: req.params.id,
-      user_key: req.session.user_id,
-      name: ,
-      date_created: ,
-    };
-    res.render('/map/${mapinfo.id}', mapInfo)
-  })
-  .post((req, res) => {
-    const mapID = req.params.id;
-    const map = function(mapID);
+//     const mapInfo = {
+//       id: req.params.id,
+//       user_key: req.session.user_id,
+//       name: req.body.name,
+//       date_created: new Date().toLocaleDateString('en_CA'),
+//     };
+//     res.render('/map/${mapinfo.id}', mapInfo)
+//   })
+//   .post((req, res) => {
+//     const mapID = req.params.id;
+//     const map = function(mapID);
 
-    res.redirect('/map')
-  });
+//     res.redirect('/map')
+//   });
 
 
 module.exports = router;
