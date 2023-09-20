@@ -1,5 +1,3 @@
--- Users table seeds here
-
 INSERT INTO users (id, username, email, password)
 VALUES
 ('1', 'geogeoff2', 'geoff@gmail.com', 'geoffisgreat'),
