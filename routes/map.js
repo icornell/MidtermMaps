@@ -1,7 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getUsers, userMaps, userLikes } = require('../db/queries/users');
-const { addNewMap ,getMapById, getAllMaps } = require('../db/queries/maps');
+const { addNewMap ,getMapById, getAllMaps } = require('/Users/lumorris/Documents/Lighthouse/MidtermMaps/db/queries/maps');
 
 // /u/map, u/map/:id, u/map/create, u/map/:id/update, u/map/:id/delete
 

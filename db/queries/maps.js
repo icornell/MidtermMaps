@@ -32,7 +32,7 @@ const getMapById = (mapId) => {
 //add new map
 const addNewMap = (mapInfo) => {
   const newMapQuery = {
-    text: 'INSERT INTO maps (user_key, name, date_created) VALUES ($1, $2, $3) RETURNING *;'
+    text: 'INSERT INTO maps (user_key, name, date_created) VALUES ($1, $2, $3) RETURNING *;',
     values: [mapInfo.user_key, mapInfo.name, mapInfo.date_created],
   };
   return db.query(newMapQuery)

@@ -30,14 +30,12 @@ app.use(cookieParser())
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const index = require('./routes/index');
 const user = require('./routes/user');
 const map = require('./routes/map');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/', index);
 app.use('/map', map);
 app.use('/u', user);
 // Note: mount other resources here, using the same pattern above
@@ -46,9 +44,9 @@ app.use('/u', user);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-const { getAllMaps } = require('../db/queries/maps');
+const { getAllMaps } = require('/Users/lumorris/Documents/Lighthouse/MidtermMaps/db/queries/maps');
 
-router.get('/', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const allMaps = await getAllMaps();
     res.render('index', {allMaps})

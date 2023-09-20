@@ -1,7 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getUsers, userMaps, userLikes } = require('../db/queries/users');
-const { addNewMap ,getMapById, getAllMaps } = require('../db/queries/maps');
+const { getUsers, userMaps, userLikes } = require('/Users/lumorris/Documents/Lighthouse/MidtermMaps/db/queries/maps');
 
 //view profile, show maps and likes
 router.get('/:user_id', async (req, res) => {
@@ -20,12 +19,9 @@ router.get('/:user_id', async (req, res) => {
 });
 
 //set user login cookie
-app.get('/login/:user_id', (req, res) => {
-res.cookie('user_id', userId); //set cookie w cookie parser
-res.redirect('/');
+router.get('/login/:user_id', (req, res) => {
+  res.cookie('user_id', userId); //set cookie w cookie parser
+  res.redirect('/');
 });
-
-app.listen(8080)
-
 
 module.exports = router;
