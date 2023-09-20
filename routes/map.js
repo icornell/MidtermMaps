@@ -6,30 +6,34 @@ const { addNewMap ,getMapById, getAllMaps } = require('../db/queries/maps');
 // /u/map, u/map/:id, u/map/create, u/map/:id/update, u/map/:id/delete
 
 //create a new map
-router.post('/create', async (req, res) => {
-  try {
-    //get user input
-    const mapInfo = {
-      'user_key': req.session.user_id,
-      'name': req.body.name,
-      'date_created': new Date().toLocaleDateString('en_CA'),
-    };
+router
+  .route('/create')
+  .get((req, res) => {
+    res.render('createMap') //render html map creation form
+  })
+  .post(async (req, res) => {
+    try {
+      //get user input
+      const mapInfo = {
+        'user_key': req.session.user_id,
+        'name': req.body.name,
+        'date_created': new Date().toLocaleDateString('en_CA'),
+      };
 
-    //add new map to database
-    const newMap = await addNewMap(mapInfo);
+      //add new map to database
+      const newMap = await addNewMap(mapInfo);
 
-    res.redirect(`/map/${newMap.id}`)
-  }
-  catch (err) {
-    console.error(err);
-    res.status(500).send('Server Error');
-  }
-});
+      res.redirect(`/map/${newMap.id}`)
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Server Error');
+    }
+  });
 
 //view a map
-router.get('/:id', (req, res) => {
+router.get('/:maps_id', async (req, res) => {
   try {
-    const mapID = req.params.id;
+    const mapID = req.params.maps_id;
     const map = await getMapById(mapID);
 
     if (map) {
@@ -38,8 +42,7 @@ router.get('/:id', (req, res) => {
     } else {
       res.status(404).send("Map not found");
     };
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err);
     res.status(500).send("Server Error")
   }
@@ -47,21 +50,21 @@ router.get('/:id', (req, res) => {
 
 //edit a map
 // router
-//   .route('/:id/update')
+//   .route('/:maps_id/update')
 //   .get((req, res) => {
-//     const mapID = req.params.id;
+//     const mapID = req.params.maps_id;
 //     const map = getMapById(mapID);
 
 //     const mapInfo = {
-//       id: req.params.id,
+//       id: req.params.maps_id,
 //       user_key: req.session.user_id,
 //       name: req.body.name,
 //       date_created: new Date().toLocaleDateString('en_CA'),
 //     };
-//     res.render('/map/${mapinfo.id}', mapInfo)
+//     res.render('/map/${mapinfo.maps_id}', mapInfo)
 //   })
 //   .post((req, res) => {
-//     const mapID = req.params.id;
+//     const mapID = req.params.maps_id;
 //     const map = function(mapID);
 
 //     res.redirect('/map')

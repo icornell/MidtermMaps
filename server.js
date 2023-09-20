@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser')
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +26,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieParser())
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -36,16 +38,24 @@ const map = require('./routes/map');
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/', index);
-app.use('map/create', newMap);
-app.use('u/:id', user);
+app.use('/map', map);
+app.use('/u', user);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get('/', (req, res) => {
-  res.render('index');
+const { getAllMaps } = require('../db/queries/maps');
+
+router.get('/', async (req, res) => {
+  try {
+    const allMaps = await getAllMaps();
+    res.render('index', {allMaps})
+  } catch(err) {
+    console.error('Error getting maps:', err);
+    res.status(500).send('Server Error');
+  }
 });
 
 app.listen(PORT, () => {
