@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { addNewMap ,getMapById, getAllMaps } = require('/Users/lumorris/Documents/Lighthouse/MidtermMaps/db/queries/maps');
+const { addNewMap ,getMapById, getAllMaps } = require('../db/queries/maps');
 
 // /u/map, u/map/:id, u/map/create, u/map/:id/update, u/map/:id/delete
 
@@ -69,5 +69,16 @@ router.get('/:maps_id', async (req, res) => {
 //     res.redirect('/map')
 //   });
 
+//delete a map
+// router.post('/:maps_id/delete', (req, res) => {
+//   try {
+//     const mapID = req.params.maps_id;
+//     //make a query to delete
+//     res.redirect('/') //return to homepage
+//   } catch (err) {
+//     console.error(err);
+//       res.status(500).send('Server Error');
+//   }
+// });
 
 module.exports = router;

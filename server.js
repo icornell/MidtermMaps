@@ -44,12 +44,12 @@ app.use('/u', user);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-const { getAllMaps } = require('/Users/lumorris/Documents/Lighthouse/MidtermMaps/db/queries/maps');
+const { getAllMaps } = require('./db/queries/maps');
 
 app.get('/', async (req, res) => {
   try {
     const allMaps = await getAllMaps();
-    res.render('index', {allMaps})
+    res.render('index.ejs', {allMaps})
   } catch(err) {
     console.error('Error getting maps:', err);
     res.status(500).send('Server Error');
