@@ -1,81 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Google Fonts CSS -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Google Fonts CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- stylesheets CSS -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/header.css" />
-  <link rel="stylesheet" href="/styles/footer.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <!-- leaflet CSS file -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/>
+    <!-- stylesheets CSS -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- leaflet CSS file -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
 
-<!-- scripts -->
+    <!-- scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/server.js"></script>
+  <script src="/vendor/jquery-3.0.0.js"></script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
 
+    <title>Home Page</title>
+  </head>
 
-  <title>Home Page</title>
+  <body>
+    <!-- header -->
+    <%- include('partials/header') %>
+    <!-- logo-->
+    <div class="large-logo">
+      <img
+        src="/images/logo-transparent.png"
+        alt="PinPals: Creative Cartography One Pin at a Time"
+      />
+    </div>
+    <!-- map -->
+    <div id="map">
+      <script>
+        var map = L.map("map").setView([51.505, -0.09], 13);
 
-  <style>
-  </style>
-
-</head>
-
-<body>
-  <!-- header -->
-  <%- include('partials/header') %>
-  <!-- logo-->
-<div class="large-logo">
-  <img src="/images/logo-transparent.png" alt="PinPals: Creative Cartography One Pin at a Time" />
-</div>
-<!--map images & buttons-->
-  <div class="container">
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+      </script>
+    </div>
+    <!--map images & buttons-->
+    <div class="container">
       <div class="row">
-          <div class="col-md-4">
-              <div id="map1" class="item"></div>
-          </div>
-          <div class="col-md-4">
-              <div id="map2" class="item"></div>
-          </div>
-          <div class="col-md-4">
-              <div id="map3" class="item"></div>
-          </div>
+        <div class="col-md-4">
+          <div id="map1" class="item"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="map2" class="item"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="map3" class="item"></div>
+        </div>
       </div>
       <div class="row">
-          <div class="col-md-4">
-              <div id="map4" class="item"></div>
-          </div>
-          <div class="col-md-4">
-              <div id="map5" class="item"></div>
-          </div>
-          <div class="col-md-4">
-              <div id="map6" class="item"></div>
-          </div>
+        <div class="col-md-4">
+          <div id="map4" class="item"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="map5" class="item"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="map6" class="item"></div>
+        </div>
       </div>
-  </div>
-
-</body>
+    </div>
+  </body>
 </html>
-  <!-- footer -->
-  <%- include('partials/footer') %>
-  <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
- integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
- crossorigin=""></script>
-
-</body>
-</html>
+<!-- footer -->
+<%- include('partials/footer') %>
