@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { addNewMap ,getMapById, getAllMaps } = require('../db/queries/maps');
+const { addNewMap ,getMapById, getAllMaps, getMarkers } = require('../db/queries/maps');
 
 // /u/map, u/map/:id, u/map/create, u/map/:id/update, u/map/:id/delete
 
@@ -34,6 +34,7 @@ router.get('/:maps_id', async (req, res) => {
   try {
     const mapID = req.params.maps_id;
     const map = await getMapById(mapID);
+    const markers = await getMarkers(mapID);
 
     if (map) {
       res.render('mapView', { map });

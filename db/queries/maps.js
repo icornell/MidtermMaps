@@ -45,4 +45,19 @@ const addNewMap = (mapInfo) => {
   });
 }
 
-module.exports = { addNewMap ,getMapById, getAllMaps }
+const getMarkers = (mapId) => {
+  const getMarkersQuery = {
+    text: 'SELECT * FROM map_points WHERE maps_key = $1',
+    values: [mapId],
+  };
+  return db.query(getMarkersQuery)
+  .then((getMarkersResult) => {
+    return getMarkersResult.rows;
+  })
+  .catch((err) => {
+    console.error(err);
+    throw err;
+  });
+}
+
+module.exports = { addNewMap ,getMapById, getAllMaps, getMarkers }

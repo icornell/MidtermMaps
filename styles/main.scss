@@ -56,3 +56,20 @@ button {
 button:hover {
   background-color: #555;
 }
+
+.map {
+  height: 10em;
+  width: 10em;
+}
+
+//map containers
+div.map-container {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}

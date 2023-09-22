@@ -8,10 +8,7 @@
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
 
     <!-- stylesheets CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
@@ -21,15 +18,17 @@
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/footer.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- leaflet CSS file -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
 
     <!-- scripts -->
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/server.js"></script>
-  <script src="/vendor/jquery-3.0.0.js"></script>
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/server.js"></script>
+    <script src="/vendor/jquery-3.0.0.js"></script>
+
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -50,18 +49,42 @@
         alt="PinPals: Creative Cartography One Pin at a Time"
       />
     </div>
-    <!-- map -->
-    <div id="map">
-      <script>
-        var map = L.map("map").setView([51.505, -0.09], 13);
 
-        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 19,
-          attribution:
-            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        }).addTo(map);
-      </script>
-    </div>
+    <!-- create containers for maps and display name, date created-->
+    <% mapMarkers.forEach(function(mapMarker) { %>
+      <div class="map-container">
+        <h2><%= mapMarker.map.name %></h2>
+        <div id="map-<%= mapMarker.map.id %>" class="map"></div>
+        <p><%= mapMarker.map.date_created %></p>
+
+        <script>
+          // Initialize a map for this container
+          var map<%= mapMarker.map.id %> = L.map("map-<%= mapMarker.map.id %>").setView([0, 0], 13);
+
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map<%= mapMarker.map.id %>);
+
+          //If markers for map set view to first marker
+          <% if (Array.isArray(mapMarker.markers) && mapMarker.markers.length > 0) { %>
+            <% var firstMarker = mapMarker.markers[0]; %>
+            map<%= mapMarker.map.id %>.setView([<%= firstMarker.x_coordinate %>, <%= firstMarker.y_coordinate %>], 13);
+
+            //Iterate and add markers
+            <% if (Array.isArray(mapMarker.markers)) { %>
+              <% mapMarker.markers.forEach(function(marker) { %>
+                L.marker([<%= marker.x_coordinate %>, <%= marker.y_coordinate %>])
+                  .addTo(map<%= mapMarker.map.id %>)
+                  .bindPopup("<b><%= marker.name %></b><br /><%= marker.description %>");
+              <% }); %>
+            <% } %>
+          <% }; %>
+        </script>
+      </div>
+    <% }); %>
+
     <!--map images & buttons-->
     <div class="container">
       <div class="row">
@@ -89,5 +112,6 @@
     </div>
   </body>
 </html>
+
 <!-- footer -->
 <%- include('partials/footer') %>
