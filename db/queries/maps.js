@@ -45,6 +45,7 @@ const addNewMap = (mapInfo) => {
   });
 }
 
+//get all markers for a specific map id
 const getMarkers = (mapId) => {
   const getMarkersQuery = {
     text: 'SELECT * FROM map_points WHERE maps_key = $1',
@@ -60,4 +61,17 @@ const getMarkers = (mapId) => {
   });
 }
 
-module.exports = { addNewMap ,getMapById, getAllMaps, getMarkers }
+//add new map point
+const addNewMapPoint = (mapPointInfo) => {
+  const newMapPointQuery = 'INSERT INTO map_points (user_key, maps_key, x_coordinate, y_coordinate, name, description, thumbnail) RETURNING *;';
+  return db.query(newMapPointQuery)
+  .then((newMapPointResult) => {
+    return newMapPointResult.rows;
+  })
+  .catch((err) => {
+    console.error(err);
+    throw err;
+  });
+}
+
+module.exports = { addNewMap ,getMapById, getAllMaps, getMarkers, addNewMapPoint }

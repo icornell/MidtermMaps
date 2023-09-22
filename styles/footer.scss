@@ -1,4 +1,9 @@
 /* CSS for the footer */
+.footer {
+  position: absolute;
+  z-index: 1;
+}
+
 .footer-bar {
   background-color: #333; /* background color */
   color: #fff; /* text color */

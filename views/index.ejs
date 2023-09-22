@@ -37,12 +37,13 @@
     ></script>
 
     <title>Home Page</title>
-  </head>
-
-  <body>
     <!-- header -->
     <%- include('partials/header') %>
     <!-- logo-->
+  </head>
+
+  <body>
+
     <div class="large-logo">
       <img
         src="/images/logo-transparent.png"
@@ -57,7 +58,8 @@
         <h2><%= mapMarker.map.name %></h2>
         <div id="map-<%= mapMarker.map.id %>" class="map"></div>
         <p><%= mapMarker.map.date_created %></p>
-        <!-- add button to go to map page -->
+        <!-- button to go to map page -->
+        <button class="mapbutton" type="button" onclick="window.location.href='/map/<%= mapMarker.map.id %>'">View Map</button>
 
         <script>
           // Initialize a map for this container
@@ -89,7 +91,6 @@
     </div>
 
   </body>
+  <!-- footer -->
+  <%- include('partials/footer') %>
 </html>
-
-<!-- footer -->
-<%- include('partials/footer') %>
