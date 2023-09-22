@@ -20,8 +20,9 @@ router.get('/:user_id', async (req, res) => {
 
 //set user login cookie
 router.get('/login/:user_id', (req, res) => {
+  const userId = req.params.user_id;
   res.cookie('user_id', userId); //set cookie w cookie parser
-  res.redirect('/');
+  res.render('users', userId);
 });
 
 module.exports = router;

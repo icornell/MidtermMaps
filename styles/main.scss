@@ -1,3 +1,9 @@
+//keep main from going over header and footer
+Main {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -58,18 +64,21 @@ button:hover {
 }
 
 .map {
-  height: 10em;
-  width: 10em;
+  height: 30em;
+  width: 30em;
 }
 
-//map containers
-div.map-container {
-  height: fit-content;
-  width: fit-content;
+//container to display all maps
+div.mapHolder {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+//individual map containers
+div.map-container {
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
   align-items: center;
 }

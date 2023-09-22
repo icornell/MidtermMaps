@@ -50,12 +50,14 @@
       />
     </div>
 
-    <!-- create containers for maps and display name, date created-->
+    <div class="mapHolder">
+      <!-- create containers for maps and display name, date created-->
     <% mapMarkers.forEach(function(mapMarker) { %>
       <div class="map-container">
         <h2><%= mapMarker.map.name %></h2>
         <div id="map-<%= mapMarker.map.id %>" class="map"></div>
         <p><%= mapMarker.map.date_created %></p>
+        <!-- add button to go to map page -->
 
         <script>
           // Initialize a map for this container
@@ -84,32 +86,8 @@
         </script>
       </div>
     <% }); %>
-
-    <!--map images & buttons-->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div id="map1" class="item"></div>
-        </div>
-        <div class="col-md-4">
-          <div id="map2" class="item"></div>
-        </div>
-        <div class="col-md-4">
-          <div id="map3" class="item"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div id="map4" class="item"></div>
-        </div>
-        <div class="col-md-4">
-          <div id="map5" class="item"></div>
-        </div>
-        <div class="col-md-4">
-          <div id="map6" class="item"></div>
-        </div>
-      </div>
     </div>
+
   </body>
 </html>
 

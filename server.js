@@ -33,12 +33,14 @@ app.use(cookieParser())
 // Note: Feel free to replace the example routes below with your own
 const user = require('./routes/user');
 const map = require('./routes/map');
+const nav = require('./routes/nav');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/map', map);
 app.use('/u', user);
+app.use('/nav', nav);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
