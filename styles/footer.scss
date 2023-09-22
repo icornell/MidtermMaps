@@ -1,0 +1,29 @@
+/* CSS for the footer */
+.footer-bar {
+  background-color: #333; /* background color */
+  color: #fff; /* text color */
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+.footer-content img {
+  max-height: 30px; /* logo height */
+  margin-bottom: 10px; /* space below the logo */
+}
+
+.text-muted {
+  margin: 5px 0; /* space between text paragraphs */
+}
+
+.footer-content a {
+  color: #fff; /* link color */
+  text-decoration: underline;
+}

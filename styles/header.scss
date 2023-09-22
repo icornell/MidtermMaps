@@ -1,0 +1,33 @@
+/* CSS for header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FC2929; /* background color */
+  color: #0000; /* text color */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 40px;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center; /* vertically centered*/
+}
+
+.navigation li {
+  margin-right: 20px; /* spacing between navigation items */
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #fff; /* link color */
+}
