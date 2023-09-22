@@ -4,15 +4,55 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background: #fff;
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+}
+
+/* CSS for the button container */
+.button-container {
+  max-width: 100%; /* screen width */
+  margin: 20px auto; /* Center the container horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between; /* Spacing between items */
+  margin-bottom: 20px; /* Space between rows */
+  width: 100%; /* Make each row take up 100% of the container width */
+}
+
+.item {
+  text-align: center;
+  width: 30%; /* item width */
+  max-width: 100%; /* container width */
+  height: 300px; /* map container height */
+  background-color: #fff; /*background color*/
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+img {
+  max-width: 100%; /*Fit within its container */
+  height: auto; /* Maintain image aspect ratio */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  max-width: 100%; /* Ensure the button doesn't exceed its container width */
+  box-sizing: border-box; /* Ensure padding doesn't affect the button's width */
+  text-align: center; /* Center button text */
+}
+
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: #555;
 }
