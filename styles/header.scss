@@ -16,7 +16,8 @@ $nav-link-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
+  z-index: 1000;
+}
 
   .logo img {
     max-height: 40px;

@@ -63,7 +63,7 @@ app.get('/', async (req, res) => {
     );
 
     //render template with maps data
-    res.render('index.ejs', { allMaps, mapMarkers})
+    res.render('index.ejs', { allMaps, mapMarkers })
   } catch(err) {
     console.error('Error getting maps:', err);
     res.status(500).send('Server Error');
