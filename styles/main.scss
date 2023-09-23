@@ -1,7 +1,6 @@
 //keep main from going over header and footer
 Main {
-  padding-top: 40px;
-  padding-bottom: 30px;
+  padding-top: 10em;
 }
 
 body {
@@ -75,6 +74,7 @@ div.mapHolder {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding-bottom: 20em;
 }
 
 //individual map containers
