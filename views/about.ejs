@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/header.css" />
   <link rel="stylesheet" href="/styles/about.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/users.js"></script>
@@ -43,16 +44,10 @@
       <li>Authenticated users can modify maps (add, edit, remove points)</li>
       <li>Authenticated users can favorite a map</li>
       <li>Authenticated users have profiles, indicating their favorite maps and maps they've contributed to</li>
-      <li>Using <a href="http://leafletjs.com/">http://leafletjs.com/</a> to display maps</li>
+      <li>Use <a href="http://leafletjs.com/" style="color: blue;">http://leafletjs.com/</a> to display maps</li>
     </ul>
-    <p class="foot">
-      <p class="content">
-        We hope you enjoy our web app and have fun creating your own maps! <br>
-        © Copyright 2023 The Students of Lighthouse Labs.<br>
-       <a href="https://github.com/icornell/MidtermMaps.git">Click Here</a> to access the GitHub repository for more information.
-      </p>
-    </p>
   </div>
+  <%- include('partials/footer') %>
 </body>
 
 </html>

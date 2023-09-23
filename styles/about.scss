@@ -17,6 +17,10 @@ $font-family: "Livvic", sans-serif;
     font-family: $font-family;
   }
 }
+.large-logo {
+  margin-top: 0px;
+  padding-top: 0px;
+}
 
 // Formatting for desktop screens
 @media screen and (min-width: 1024px) {
