@@ -34,6 +34,7 @@ app.use(cookieParser())
 const user = require('./routes/user');
 const map = require('./routes/map');
 const nav = require('./routes/nav');
+const like = require('./routes/like');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,6 +42,7 @@ const nav = require('./routes/nav');
 app.use('/map', map);
 app.use('/u', user);
 app.use('/nav', nav);
+app.use('/like', like);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
