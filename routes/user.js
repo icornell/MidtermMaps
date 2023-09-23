@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getUsers, userMaps, userLikes } = require('/Users/lumorris/Documents/Lighthouse/MidtermMaps/db/queries/maps');
+const { getUsers, userMaps, userLikes } = require('../db/queries/maps');
 
 //view profile, show maps and likes
 router.get('/:user_id', async (req, res) => {
