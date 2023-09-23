@@ -1,42 +1,60 @@
-    body {
-      font-family: "Livvic", sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-    }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Livvic", sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
 
-    #header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      font-family: "Livvic", sans-serif;
-    }
+#header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-family: "Livvic", sans-serif;
+}
 
-    #header img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
+#header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 
-    #username {
-      font-size: 18px;
-      margin-top: 10px;
-      font-family: "Livvic", sans-serif;
-    }
+#username {
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: "Livvic", sans-serif;
+}
 
-    #content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+#content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-    .scrollable-row {
-      display: flex;
-      overflow-x: auto;
-      margin-bottom: 20px;
-    }
+.map {
+  height: 30em;
+  width: 30em;
+  position: relative;
+  z-index: -1;
+}
 
-    .scrollable-row h2 {
-      margin-right: 20px;
-    }
+//container to display all maps
+div.mapHolder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 20em;
+}
+
+//individual map containers
+div.map-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}

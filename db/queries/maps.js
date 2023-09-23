@@ -48,7 +48,7 @@ const addNewMap = (mapInfo) => {
 //get all markers for a specific map id
 const getMarkers = (mapId) => {
   const getMarkersQuery = {
-    text: 'SELECT * FROM map_points WHERE maps_key = $1',
+    text: 'SELECT * FROM map_points WHERE maps_key = $1;',
     values: [mapId],
   };
   return db.query(getMarkersQuery)
