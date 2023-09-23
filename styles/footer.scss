@@ -1,7 +1,7 @@
 /* CSS for the footer */
 .footer {
   position: absolute;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .footer-bar {
@@ -12,6 +12,7 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  z-index: 1000;
 }
 
 .footer-content {

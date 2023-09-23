@@ -8,10 +8,17 @@ const { addNewMap ,getMapById, getAllMaps, getMarkers } = require('../db/queries
 router
   .route('/create')
   .get((req, res) => {
-    res.render('createMap') //render html map creation form
+    if (!req.cookies.user_id) {
+      return res.status(400).send("Please login first")
+    };
+    res.render('new') //render html map creation form
   })
   .post(async (req, res) => {
     try {
+      //auth user
+      if (!req.cookies.user_id) {
+        return res.status(400).send("Please login first")
+      };
       //get user input
       const mapInfo = {
         'user_key': req.session.user_id,

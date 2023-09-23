@@ -11,6 +11,22 @@ const getUsers = () => {
     });
 };
 
+const getUser = (user_id) => {
+  const getUserQuery = {
+    text: 'SELECT * FROM users WHERE id = $1;',
+    values: [user_id],
+  };
+
+  return db.query(getUserQuery)
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.error(err);
+      throw err;
+    });
+};
+
 //lookup user maps
 const userMaps = (user_id) => {
   const userMapsQuery = {
@@ -45,4 +61,4 @@ const userLikes = (user_id) => {
     });
 };
 
-module.exports = { getUsers, userMaps, userLikes };
+module.exports = { getUsers, getUser, userMaps, userLikes };
