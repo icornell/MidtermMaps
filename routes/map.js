@@ -37,7 +37,7 @@ router.get('/:maps_id', async (req, res) => {
     const markers = await getMarkers(mapID);
 
     if (map) {
-      res.render('mapView', { map });
+      res.render('map', { map, markers });
       //replace mapView with the html view file name
     } else {
       res.status(404).send("Map not found");
