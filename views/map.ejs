@@ -43,40 +43,38 @@
   </head>
 
   <body>
-    <div class="mapHolder">
-      <!-- create container for map and display name, date created-->
-      <div class="map-container">
-        <h2><%= map.name %></h2>
-        <div id="map-<%= map.id %>" class="map"></div>
-        <p><%= map.date_created %></p>
+    <!-- create container for map and display name, date created-->
+    <div class="map-container">
+      <h2><%= map.name %></h2>
+      <div id="map-<%= map.id %>" class="map"></div>
+      <p><%= map.date_created %></p>
 
-        <script>
-          // Initialize a map for this container
-          var map<%= map.id %> = L.map("map-<%= map.id %>").setView([0, 0], 13);
+      <script>
+        // Initialize a map for this container
+        var map<%= map.id %> = L.map("map-<%= map.id %>").setView([0, 0], 13);
 
-          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            maxZoom: 19,
-            attribution:
-              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-          }).addTo(map<%= map.id %>);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map<%= map.id %>);
 
-          //If markers for map set view to first marker
+        //If markers for map set view to first marker
+        <% if (markers) { %>
+          <% var firstMarker = markers[0]; %>
+          map<%= map.id %>.setView([<%= firstMarker.x_coordinate %>, <%= firstMarker.y_coordinate %>], 13);
+
+          //Iterate and add markers
           <% if (markers) { %>
-            <% var firstMarker = markers[0]; %>
-            map<%= map.id %>.setView([<%= firstMarker.x_coordinate %>, <%= firstMarker.y_coordinate %>], 13);
+            <% markers.forEach(function(marker) { %>
+              L.marker([<%= marker.x_coordinate %>, <%= marker.y_coordinate %>])
+                .addTo(map<%= map.id %>)
+                .bindPopup("<b><%= marker.name %></b><br /><%= marker.description %>");
+            <% }); %>
+          <% } %>
+        <% }; %>
+      </script>
 
-            //Iterate and add markers
-            <% if (markers) { %>
-              <% markers.forEach(function(marker) { %>
-                L.marker([<%= marker.x_coordinate %>, <%= marker.y_coordinate %>])
-                  .addTo(map<%= map.id %>)
-                  .bindPopup("<b><%= marker.name %></b><br /><%= marker.description %>");
-              <% }); %>
-            <% } %>
-          <% }; %>
-        </script>
-
-      </div>
     </div>
   </body>
 

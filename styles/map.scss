@@ -16,29 +16,10 @@ body {
   z-index: -1;
 }
 
-//container to display all maps
+//container to display the map
 div.mapHolder {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   padding-bottom: 20em;
-}
-
-//individual map containers
-div.map-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.mapbutton.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }
