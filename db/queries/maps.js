@@ -45,4 +45,33 @@ const addNewMap = (mapInfo) => {
   });
 }
 
-module.exports = { addNewMap ,getMapById, getAllMaps }
+//get all markers for a specific map id
+const getMarkers = (mapId) => {
+  const getMarkersQuery = {
+    text: 'SELECT * FROM map_points WHERE maps_key = $1',
+    values: [mapId],
+  };
+  return db.query(getMarkersQuery)
+  .then((getMarkersResult) => {
+    return getMarkersResult.rows;
+  })
+  .catch((err) => {
+    console.error(err);
+    throw err;
+  });
+}
+
+//add new map point
+const addNewMapPoint = (mapPointInfo) => {
+  const newMapPointQuery = 'INSERT INTO map_points (user_key, maps_key, x_coordinate, y_coordinate, name, description, thumbnail) RETURNING *;';
+  return db.query(newMapPointQuery)
+  .then((newMapPointResult) => {
+    return newMapPointResult.rows;
+  })
+  .catch((err) => {
+    console.error(err);
+    throw err;
+  });
+}
+
+module.exports = { addNewMap ,getMapById, getAllMaps, getMarkers, addNewMapPoint }

@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser')
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const { getAllMaps, getMarkers } = require('./db/queries/maps'); //helper function to get all maps in db
 
 app.set('view engine', 'ejs');
 
@@ -32,12 +33,14 @@ app.use(cookieParser())
 // Note: Feel free to replace the example routes below with your own
 const user = require('./routes/user');
 const map = require('./routes/map');
+const nav = require('./routes/nav');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/map', map);
 app.use('/u', user);
+app.use('/nav', nav);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -46,8 +49,19 @@ app.use('/u', user);
 
 app.get('/', async (req, res) => {
   try {
+    //get all maps from db
     const allMaps = await getAllMaps();
-    res.render('index.ejs', {allMaps})
+
+    //iterate allmaps getting markers for each
+    const mapMarkers = await Promise.all(
+      allMaps.map(async (map) => {
+        const markers = await getMarkers(map.id);
+        return { map, markers };
+      })
+    );
+
+    //render template with maps data
+    res.render('index.ejs', { allMaps, mapMarkers})
   } catch(err) {
     console.error('Error getting maps:', err);
     res.status(500).send('Server Error');
