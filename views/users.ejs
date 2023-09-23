@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/styles/layout.css" />
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="/styles/users.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- leaflet CSS file -->
@@ -48,6 +49,86 @@
     </div>
     <div class="username" id="username">
       <h2><%= user.username %></h2>
+    </div>
+
+    <h2>My Maps</h2>
+    <div class="mapHolder">
+      <!-- create containers for maps and display name, date created-->
+      <% mapMarkers.forEach(function(mapMarker) { %>
+      <div class="map-container">
+        <h2><%= mapMarker.map.name %></h2>
+        <div id="map-<%= mapMarker.map.id %>" class="map"></div>
+        <p><%= mapMarker.map.date_created %></p>
+        <!-- button to go to map page -->
+        <button class="mapbutton" type="button" onclick="window.location.href='/map/<%= mapMarker.map.id %>'">View Map</button>
+
+        <script>
+          // Initialize a map for this container
+          var map<%= mapMarker.map.id %> = L.map("map-<%= mapMarker.map.id %>").setView([0, 0], 13);
+
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map<%= mapMarker.map.id %>);
+
+          //If markers for map set view to first marker
+          <% if (Array.isArray(mapMarker.markers) && mapMarker.markers.length > 0) { %>
+            <% var firstMarker = mapMarker.markers[0]; %>
+            map<%= mapMarker.map.id %>.setView([<%= firstMarker.x_coordinate %>, <%= firstMarker.y_coordinate %>], 13);
+
+            //Iterate and add markers
+            <% if (Array.isArray(mapMarker.markers)) { %>
+              <% mapMarker.markers.forEach(function(marker) { %>
+                L.marker([<%= marker.x_coordinate %>, <%= marker.y_coordinate %>])
+                  .addTo(map<%= mapMarker.map.id %>)
+                  .bindPopup("<b><%= marker.name %></b><br /><%= marker.description %>");
+              <% }); %>
+            <% } %>
+          <% }; %>
+        </script>
+      </div>
+    <% }); %>
+    </div>
+
+    <h2>My Liked Maps</h2>
+    <div class="mapHolder">
+      <!-- create containers for maps and display name, date created-->
+      <% likeMarkers.forEach(function(likeMarker) { %>
+      <div class="map-container">
+        <h2><%= likeMarker.map.name %></h2>
+        <div id="map-<%= likeMarker.map.id %>" class="map"></div>
+        <p><%= likeMarker.map.date_created %></p>
+        <!-- button to go to map page -->
+        <button class="mapbutton" type="button" onclick="window.location.href='/map/<%= likeMarker.map.id %>'">View Map</button>
+
+        <script>
+          // Initialize a map for this container
+          var map<%= likeMarker.map.id %> = L.map("map-<%= likeMarker.map.id %>").setView([0, 0], 13);
+
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map<%= likeMarker.map.id %>);
+
+          //If markers for map set view to first marker
+          <% if (Array.isArray(likeMarker.markers) && likeMarker.markers.length > 0) { %>
+            <% var firstMarker = likeMarker.markers[0]; %>
+            map<%= likeMarker.map.id %>.setView([<%= firstMarker.x_coordinate %>, <%= firstMarker.y_coordinate %>], 13);
+
+            //Iterate and add markers
+            <% if (Array.isArray(likeMarker.markers)) { %>
+              <% likeMarker.markers.forEach(function(marker) { %>
+                L.marker([<%= marker.x_coordinate %>, <%= marker.y_coordinate %>])
+                  .addTo(map<%= likeMarker.map.id %>)
+                  .bindPopup("<b><%= marker.name %></b><br /><%= marker.description %>");
+              <% }); %>
+            <% } %>
+          <% }; %>
+        </script>
+      </div>
+    <% }); %>
     </div>
 
   </body>

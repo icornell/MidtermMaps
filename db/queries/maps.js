@@ -66,7 +66,7 @@ const addNewMapPoint = (mapPointInfo) => {
   const newMapPointQuery = 'INSERT INTO map_points (user_key, maps_key, x_coordinate, y_coordinate, name, description, thumbnail) RETURNING *;';
   return db.query(newMapPointQuery)
   .then((newMapPointResult) => {
-    return newMapPointResult.rows;
+    return newMapPointResult.rows[0];
   })
   .catch((err) => {
     console.error(err);

@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
-const { getUser, userMaps, userLikes } = require('../db/queries/users');
+const { getUsers, getUser, userMaps, userLikes } = require('../db/queries/users');
 const { addNewMap ,getMapById, getAllMaps, getMarkers, addNewMapPoint } = require('../db/queries/maps');
 router.use(cookieParser());
 
@@ -21,8 +21,15 @@ router.get('/:user_id', async (req, res) => {
     );
 
     const likes = await userLikes(userId);
+    //iterate maps getting markers for each
+    const likeMarkers = await Promise.all(
+      likes.map(async (map) => {
+        const markers = await getMarkers(map.id);
+        return { map, markers };
+      })
+    );
 
-    res.render('users', { user, maps, mapMarkers, likes });
+    res.render('users', { user, mapMarkers, likeMarkers } );
   }
   catch (err) {
     console.error(err);
