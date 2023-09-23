@@ -1,5 +1,5 @@
-//keep main from going over header and footer
-Main {
+
+main {
   padding-top: 40px;
   padding-bottom: 30px;
 }
@@ -39,7 +39,6 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-
 img {
   max-width: 100%; /*Fit within its container */
   height: auto; /* Maintain image aspect ratio */
@@ -56,7 +55,6 @@ button {
   box-sizing: border-box; /* Ensure padding doesn't affect the button's width */
   text-align: center; /* Center button text */
 }
-
 
 /* Hover effect for buttons */
 button:hover {
@@ -94,4 +92,31 @@ div.map-container {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+/* "Like" button */
+button.like-button.like {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer; /* Cursor on hover */
+  color: rgba(0, 150, 136, 1);
+  background-color: rgba(38, 166, 154, 0.3);
+  border-color: rgba(0, 150, 136, 1);
+  border-width: 1px;
+}
+
+/* Formatting for desktop screens */
+@media screen and (min-width: 1024px) {
+  main {
+    width: 52%;
+    margin: 0 3%;
+    float: right;
+  }
+
+  body {
+    margin-top: 150px;
+  }
 }

@@ -1,28 +1,32 @@
-/* styles.css */
+// Define the font family as a variable for reuse
+$font-family: "Livvic", sans-serif;
+
 .content {
   text-align: center;
   width: 100%;
+  font-family: $font-family;
 }
-\
+
 .requirements {
-  text-align: left;
   margin-top: 20px;
-}
-
-.requirements li {
-  margin-bottom: 10px;
-}
-
-p.foot {
-  background-color: #333; /* background color */
-  color: #fff; /* text color */
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   text-align: center;
+  font-family: $font-family;
+  padding-left: 0px;
+    li {
+    margin-bottom: 10px;
+    font-family: $font-family;
+  }
 }
 
-p.content {
-  color: #fff; /* link color */
-  text-decoration: underline;
+// Formatting for desktop screens
+@media screen and (min-width: 1024px) {
+  main {
+    width: 52%;
+    margin: 0 3%;
+    float: right;
+  }
+
+  body {
+    margin-top: 150px;
+  }
 }

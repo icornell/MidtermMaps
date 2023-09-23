@@ -1,31 +1,62 @@
-/* search.css */
+/* Define variables for reuse if needed */
+$font-family: "Livvic", sans-serif;
+$primary-color: #007bff;
+$like-button-color: rgba(0, 150, 136, 1);
+$like-button-bg-color: rgba(38, 166, 154, 0.3);
+
 .search-bar {
   width: 100%;
   text-align: center;
   padding: 20px 0;
-  font-family: "Livvic", sans-serif;
+  font-family: $font-family;
+
+  .search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #333; /* Text color */
+      font-family: $font-family;
+    }
+
+    button {
+      background-color: $primary-color;
+      font-family: $font-family;
+      border-radius: 12px;
+      color: #fff;
+      border: none;
+    }
+  }
 }
 
-.search-bar .search-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* "Like" button */
+button.like-button.like {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer; /* Cursor on hover */
+  color: $like-button-color;
+  background-color: $like-button-bg-color;
+  border-color: $like-button-color;
+  border-width: 1px;
 }
 
-.search-bar input[type="text"] {
-  width: 70%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #333; /* Text color */
-  font-family: "Livvic", sans-serif;
-}
-
-.search-bar button {
-  background-color: #007bff;
-  font-family: "Livvic", sans-serif;
-  border-radius: 12px;
-  color: #fff;
-  border: none;
+/* Formatting for desktop screens */
+@media screen and (min-width: 1024px) {
+  main {
+    width: 52%;
+    margin: 0 3%;
+    float: right;
+  }
+  body {
+    margin-top: 150px;
+  }
 }

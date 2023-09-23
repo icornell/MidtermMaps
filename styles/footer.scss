@@ -1,34 +1,42 @@
-/* CSS for the footer */
+// Define variables for reuse
+$footer-bg-color: #333;
+$footer-text-color: #fff;
+$footer-content-max-width: 1200px;
+$footer-logo-max-height: 30px;
+$footer-logo-margin-bottom: 10px;
+$footer-text-margin: 5px;
+$footer-link-color: #fff;
+
 .footer {
   position: absolute;
   z-index: 1;
 }
 
 .footer-bar {
-  background-color: #333; /* background color */
-  color: #fff; /* text color */
+  background-color: $footer-bg-color;
+  color: $footer-text-color;
   padding: 10px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
-}
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto; /* Center the content horizontally */
-}
+  .footer-content {
+    max-width: $footer-content-max-width;
+    margin: 0 auto;
 
-.footer-content img {
-  max-height: 30px; /* logo height */
-  margin-bottom: 10px; /* space below the logo */
-}
+    img {
+      max-height: $footer-logo-max-height;
+      margin-bottom: $footer-logo-margin-bottom;
+    }
 
-.text-muted {
-  margin: 5px 0; /* space between text paragraphs */
-}
+    .text-muted {
+      margin: $footer-text-margin 0;
+    }
 
-.footer-content a {
-  color: #fff; /* link color */
-  text-decoration: underline;
+    a {
+      color: $footer-link-color;
+      text-decoration: underline;
+    }
+  }
 }

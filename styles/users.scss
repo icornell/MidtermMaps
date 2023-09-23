@@ -1,42 +1,54 @@
-    body {
-      font-family: "Livvic", sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-    }
+body {
+  font-family: "Livvic", sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
 
-    #header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      font-family: "Livvic", sans-serif;
-    }
+#header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-family: "Livvic", sans-serif;
+}
 
-    #header img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
+#header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 
-    #username {
-      font-size: 18px;
-      margin-top: 10px;
-      font-family: "Livvic", sans-serif;
-    }
+#username {
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: "Livvic", sans-serif;
+}
 
-    #content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+#content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-    .scrollable-row {
-      display: flex;
-      overflow-x: auto;
-      margin-bottom: 20px;
-    }
+.scrollable-row {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
 
-    .scrollable-row h2 {
-      margin-right: 20px;
-    }
+.scrollable-row h2 {
+  margin-right: 20px;
+}
+
+/* Formatting for desktop screens */
+@media screen and (min-width: 1024px) {
+  main {
+    width: 52%;
+    margin: 0 3%;
+    float: right;
+  }
+  body {
+    margin-top: 150px;
+  }
+}

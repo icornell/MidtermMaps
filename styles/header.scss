@@ -1,34 +1,45 @@
-/* CSS for header */
+// Define variables for reuse
+$header-bg-color: #FC2929;
+$header-text-color: #000;
+$header-padding: 10px 20px;
+$nav-item-spacing: 20px;
+$nav-link-color: #fff;
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #FC2929; /* background color */
-  color: #0000; /* text color */
-  padding: 10px 20px;
+  background-color: $header-bg-color;
+  color: $header-text-color;
+  padding: $header-padding;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1;
-}
 
-.logo img {
-  max-height: 40px;
-}
+  .logo img {
+    max-height: 40px;
+  }
 
-.navigation ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  align-items: center; /* vertically centered*/
-}
+  .navigation {
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      /* vertically centered */
 
-.navigation li {
-  margin-right: 20px; /* spacing between navigation items */
-}
+      li {
+        margin-right: $nav-item-spacing;
+        /* spacing between navigation items */
 
-.navigation a {
-  text-decoration: none;
-  color: #fff; /* link color */
+        a {
+          text-decoration: none;
+          color: $nav-link-color;
+          /* link color */
+        }
+      }
+    }
+  }
 }
